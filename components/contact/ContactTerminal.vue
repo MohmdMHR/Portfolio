@@ -47,7 +47,8 @@ const handleCommand = async () => {
 }
 
 onMounted(() => {
-  if (inputRef.value) inputRef.value.focus()
+  // Autofocus removed to prevent auto-scrolling to footer on page load
+  // if (inputRef.value) inputRef.value.focus()
 })
 </script>
 
