@@ -27,7 +27,7 @@ export function parseOrder(raw: unknown): ParsedOrder {
 }
 
 export interface TrustingView {
-  greeting: string
+  name: string
   total: string
   broken: boolean
 }
@@ -38,16 +38,16 @@ export function renderTrusting(raw: unknown): TrustingView {
   const total = typeof response.total === 'number' ? withVat(response.total) : Number.NaN
 
   return {
-    greeting: `Hello ${response.customer}`,
-    total: `Total with VAT: AED ${total}`,
+    name: String(response.customer),
+    total: String(total),
     broken: response.customer === undefined || Number.isNaN(total),
   }
 }
 
 export const responses = {
-  agreed: { label: 'API as agreed', body: { customer: 'Layla', total: 240 } },
-  renamed: { label: 'Backend renames a field', body: { client: 'Layla', total: 240 } },
-  text: { label: 'Total arrives as text', body: { customer: 'Layla', total: '240 AED' } },
+  agreed: { customer: 'Layla', total: 240 },
+  renamed: { client: 'Layla', total: 240 },
+  text: { customer: 'Layla', total: '240 AED' },
 } as const
 
 export type ResponseId = keyof typeof responses

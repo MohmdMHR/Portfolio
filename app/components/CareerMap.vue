@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { roles, rolesUsing, skills } from '~/domain/career'
 
+const m = useMessages()
+const locale = useLocale()
 const active = ref('Vue')
 const paths = ref<string[]>([])
 
@@ -17,12 +19,13 @@ function drawLinks() {
   const box = host.getBoundingClientRect()
   const skill = host.querySelector('.skill[aria-pressed="true"]')?.getBoundingClientRect()
   if (!skill) return
+  const rtl = getComputedStyle(host).direction === 'rtl'
 
   paths.value = [...host.querySelectorAll('.role.hit')].map((role) => {
     const target = role.getBoundingClientRect()
-    const x1 = skill.right - box.left
+    const x1 = (rtl ? skill.left : skill.right) - box.left
     const y1 = skill.top + skill.height / 2 - box.top
-    const x2 = target.left - box.left
+    const x2 = (rtl ? target.right : target.left) - box.left
     const y2 = target.top + target.height / 2 - box.top
     const middle = (x1 + x2) / 2
     return `M${x1} ${y1}C${middle} ${y1} ${middle} ${y2} ${x2} ${y2}`
@@ -58,7 +61,7 @@ onBeforeUnmount(() => window.removeEventListener('resize', drawLinks))
     <div
       class="skills"
       role="group"
-      aria-label="Skills"
+      :aria-label="m.career.skillsLabel"
     >
       <button
         v-for="skill in skills"
@@ -68,7 +71,7 @@ onBeforeUnmount(() => window.removeEventListener('resize', drawLinks))
         :aria-pressed="active === skill.name"
         @click="active = skill.name"
       >
-        {{ skill.name }}
+        {{ m.career.skills[skill.name] }}
       </button>
     </div>
     <div class="roles">
@@ -82,16 +85,20 @@ onBeforeUnmount(() => window.removeEventListener('resize', drawLinks))
       >
         <summary>
           <span class="t">
-            {{ role.title }},
+            {{ m.career.roles[role.id].title }}{{ locale === 'ar' ? '،' : ',' }}
             <template v-if="role.employer">
-              {{ role.employer }}<template v-if="role.forWithheldClient">, for <RedactedName /></template>
+              <bdi>{{ role.employer }}</bdi>
+              <template v-if="role.forWithheldClient">
+                <span class="for-client">{{ m.career.forClient }}</span>
+                <RedactedName />
+              </template>
             </template>
             <RedactedName v-else />
           </span>
-          <span class="m">{{ role.context }}. {{ role.dates }}</span>
+          <span class="m">{{ m.career.roles[role.id].context }}. <bdi>{{ m.career.roles[role.id].dates }}</bdi></span>
         </summary>
         <p class="d">
-          {{ role.detail }}
+          {{ m.career.roles[role.id].detail }}
         </p>
       </details>
     </div>

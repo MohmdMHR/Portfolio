@@ -8,5 +8,4 @@ export const release = (flags: Flags): Flags => ({ ...flags, production: true })
 
 export const kill = (flags: Flags): Flags => ({ ...flags, production: false })
 
-export const checkoutFor = (flags: Flags, environment: Environment): string =>
-  flags[environment] ? 'New checkout' : 'Old checkout'
+export const usesNewCheckout = (flags: Flags, environment: Environment): boolean => flags[environment]

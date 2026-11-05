@@ -1,33 +1,34 @@
 <script setup lang="ts">
+const m = useMessages()
 const { theme, toggle } = useTheme()
 </script>
 
 <template>
   <header class="bar">
     <div class="wrap">
-      <strong>Mohamed Mahir</strong>
-      <nav aria-label="Main">
-        <a href="#career">Career</a>
-        <a href="#demos">Demos</a>
-        <a href="#read">Code</a>
-        <a href="#contact">Contact</a>
+      <strong>{{ m.nav.name }}</strong>
+      <nav :aria-label="m.nav.label">
+        <a href="#career">{{ m.nav.career }}</a>
+        <a href="#demos">{{ m.nav.demos }}</a>
+        <a href="#read">{{ m.nav.code }}</a>
+        <a href="#contact">{{ m.nav.contact }}</a>
         <NuxtLink
-          to="/ar"
-          lang="ar"
-          class="arabic"
-        >العربية</NuxtLink>
+          :to="m.nav.otherLanguagePath"
+          :lang="m.nav.otherLanguageTag"
+          data-testid="language"
+        >{{ m.nav.otherLanguage }}</NuxtLink>
         <button
           class="switch"
           type="button"
           @click="toggle"
         >
-          {{ theme === 'dark' ? 'Light mode' : 'Dark mode' }}
+          {{ theme === 'dark' ? m.nav.toLight : m.nav.toDark }}
         </button>
         <a
           class="btn small"
           :href="links.cv"
           download
-        >Download CV</a>
+        >{{ m.actions.cv }}</a>
       </nav>
     </div>
   </header>

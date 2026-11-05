@@ -26,8 +26,8 @@ describe('parsing an order at the boundary', () => {
 describe('trusting the response without checking it', () => {
   it('works while the API behaves', () => {
     expect(renderTrusting({ customer: 'Layla', total: 240 })).toEqual({
-      greeting: 'Hello Layla',
-      total: 'Total with VAT: AED 252',
+      name: 'Layla',
+      total: '252',
       broken: false,
     })
   })
@@ -35,14 +35,14 @@ describe('trusting the response without checking it', () => {
   it('shows the customer undefined when a field is renamed', () => {
     const view = renderTrusting({ client: 'Layla', total: 240 })
 
-    expect(view.greeting).toBe('Hello undefined')
+    expect(view.name).toBe('undefined')
     expect(view.broken).toBe(true)
   })
 
   it('shows the customer NaN when a number arrives as text', () => {
     const view = renderTrusting({ customer: 'Layla', total: '240 AED' })
 
-    expect(view.total).toBe('Total with VAT: AED NaN')
+    expect(view.total).toBe('NaN')
     expect(view.broken).toBe(true)
   })
 })

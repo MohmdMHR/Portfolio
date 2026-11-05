@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import { GATES, outcome, scenarios, type ScenarioId } from '~/domain/gates'
 
-const options = (Object.keys(scenarios) as ScenarioId[]).map(id => ({ id, label: scenarios[id].label }))
+const m = useMessages()
+const options = (Object.keys(scenarios) as ScenarioId[]).map(id => ({ id, label: m.demos.gates.scenarios[id].label }))
 const selected = ref<ScenarioId>('design')
 const revealed = ref<number>(GATES.length)
 
@@ -16,6 +17,11 @@ const stateClass = (index: number) => {
   if (status === 'passed') return 'ok'
   if (status === 'rejected') return 'no'
   return status === 'not reached' ? 'skip' : ''
+}
+const statusLabel = (index: number) => {
+  const status = shown(index)
+  if (status === 'passed') return m.demos.gates.passed
+  return status === 'rejected' ? m.demos.gates.rejected : ''
 }
 
 let timer: ReturnType<typeof setTimeout> | undefined
@@ -39,17 +45,17 @@ onBeforeUnmount(() => clearTimeout(timer))
 
 <template>
   <div>
-    <h3>Get this past the gates</h3>
+    <h3>{{ m.demos.gates.heading }}</h3>
     <p class="why">
-      Claude Code writes the implementation inside strict TypeScript, DDD boundaries and failing tests. Custom skills carry the team's conventions and are constrained by domain interfaces, and every task starts from a plan. Pick a change and send it through. The scenarios are based on real rejections.
+      {{ m.demos.gates.why }}
     </p>
     <p class="principle">
-      Contract-first. Domain modelling stays the ground truth, and AI speeds up execution inside it.
+      {{ m.demos.gates.principle }}
     </p>
     <ChoiceGroup
       v-model="selected"
       :options="options"
-      label="Change to send through the gates"
+      :label="m.demos.gates.label"
     />
     <ol class="gates">
       <li
@@ -58,15 +64,15 @@ onBeforeUnmount(() => clearTimeout(timer))
         class="gate"
         :class="stateClass(index)"
       >
-        {{ gate }}
-        <small>{{ shown(index) === 'not reached' ? '' : shown(index) }}</small>
+        {{ m.demos.gates.names[gate] }}
+        <small>{{ statusLabel(index) }}</small>
       </li>
     </ol>
     <p
       class="verdict"
       aria-live="polite"
     >
-      {{ finished ? scenarios[selected].verdict : '' }}
+      {{ finished ? m.demos.gates.scenarios[selected].verdict : '' }}
     </p>
   </div>
 </template>

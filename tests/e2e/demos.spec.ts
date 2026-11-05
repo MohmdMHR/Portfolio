@@ -47,7 +47,7 @@ test('a renamed field breaks the trusting version and is caught by the parsed on
   await openDemo(page, 'Contract drift')
   await page.getByRole('button', { name: 'Backend renames a field' }).click()
 
-  await expect(page.getByText('Hello undefined')).toBeVisible()
+  await expect(page.getByTestId('trusting')).toContainText('Hello undefined')
   await expect(page.getByText('This order could not load.')).toBeVisible()
   await expect(page.getByText('with the exact field: customer')).toBeVisible()
 })
@@ -86,4 +86,24 @@ test('rebranding changes the tokens', async ({ page }) => {
 
   await expect(page.locator('.lab:visible pre')).toContainText('#C2410C')
   await expect(page.locator('.tile')).toHaveText('Good to see you')
+})
+
+test('the direction demo flips the interface and keeps numbers readable', async ({ page }) => {
+  await openDemo(page, 'RTL and LTR')
+  const flip = page.getByTestId('flip')
+  await expect(flip).toHaveAttribute('dir', 'ltr')
+
+  await page.locator('.lab:visible').getByRole('button', { name: 'العربية، RTL' }).click()
+
+  await expect(flip).toHaveAttribute('dir', 'rtl')
+  await expect(flip).toContainText('باقة إنترنت الألياف')
+  await expect(flip.locator('bdi').filter({ hasText: '+971' })).toBeVisible()
+})
+
+test('a gate demo works in Arabic', async ({ page }) => {
+  await page.goto('/ar')
+  await page.getByRole('button', { name: 'ترقيع في الواجهة الأمامية يخفي خطأ في الواجهة الخلفية' }).click()
+
+  await expect(page.locator('.gate.no')).toContainText('المراجعة البشرية')
+  await expect(page.locator('.verdict')).toContainText('يخفي الخطأ الحقيقي')
 })

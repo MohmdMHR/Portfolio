@@ -1,59 +1,61 @@
 <script setup lang="ts">
 import { parseOrder, renderTrusting, responses, withVat, type ResponseId } from '~/domain/order-contract'
 
-const options = (Object.keys(responses) as ResponseId[]).map(id => ({ id, label: responses[id].label }))
+const m = useMessages()
+const options = (Object.keys(responses) as ResponseId[]).map(id => ({ id, label: m.demos.contract.responses[id] }))
 const selected = ref<ResponseId>('renamed')
 
-const body = computed(() => responses[selected.value].body)
+const body = computed(() => responses[selected.value])
 const trusting = computed(() => renderTrusting(body.value))
 const parsed = computed(() => parseOrder(body.value))
 </script>
 
 <template>
   <div>
-    <h3>Change the API under the app</h3>
+    <h3>{{ m.demos.contract.heading }}</h3>
     <p class="why">
-      TypeScript types disappear at runtime. A type says what the API should return, not what it did return. Change the response and compare the two versions. This is why a whole app's validation layer was rewritten with Zod and typed service boundaries.
+      {{ m.demos.contract.why }}
     </p>
     <p class="principle">
-      Parse, don't validate. The Dependency Rule.
+      {{ m.demos.contract.principle }}
     </p>
     <ChoiceGroup
       v-model="selected"
       :options="options"
-      label="API response"
+      :label="m.demos.contract.label"
     />
     <pre tabindex="0">GET /orders/1042
 {{ JSON.stringify(body, null, 2) }}</pre>
     <div class="two stacked">
       <div class="screen">
-        <h4>Types only, trusting the response</h4>
+        <h4>{{ m.demos.contract.trustingHeading }}</h4>
         <div
           class="big"
           :class="{ bad: trusting.broken }"
+          data-testid="trusting"
         >
-          {{ trusting.greeting }}<br>{{ trusting.total }}
+          {{ m.demos.contract.hello(trusting.name) }}<br>{{ m.demos.contract.total(trusting.total) }}
         </div>
         <p class="note">
-          {{ trusting.broken ? 'It compiled fine. The customer sees this.' : 'Works today.' }}
+          {{ trusting.broken ? m.demos.contract.brokenNote : m.demos.contract.fineNote }}
         </p>
       </div>
       <div class="screen">
-        <h4>Parsed once at the boundary</h4>
+        <h4>{{ m.demos.contract.parsedHeading }}</h4>
         <template v-if="parsed.ok">
           <div class="big">
-            Hello {{ parsed.order.customer }}<br>Total with VAT: AED {{ withVat(parsed.order.total) }}
+            {{ m.demos.contract.hello(parsed.order.customer) }}<br>{{ m.demos.contract.total(String(withVat(parsed.order.total))) }}
           </div>
           <p class="note">
-            Everything past the boundary can trust its type.
+            {{ m.demos.contract.trustNote }}
           </p>
         </template>
         <template v-else>
           <div class="big">
-            This order could not load.
+            {{ m.demos.contract.failed }}
           </div>
           <p class="note good">
-            Caught at the edge, with the exact field: {{ parsed.field }}
+            {{ m.demos.contract.caught(parsed.field) }}
           </p>
         </template>
       </div>

@@ -15,7 +15,7 @@ describe('a terminal retries after losing the response', () => {
     const without = simulateLostResponse({ withKey: false }).log
 
     expect(withKey).toHaveLength(5)
-    expect(withKey.at(-1)).toContain('returns the first result')
-    expect(without.at(-1)).toContain('again')
+    expect(withKey.at(-1)).toBe('replay')
+    expect(without.at(-1)).toBe('redeemAgain')
   })
 })

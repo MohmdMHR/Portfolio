@@ -45,26 +45,50 @@ test('serves the CV', async ({ request }) => {
   expect(response.headers()['content-type']).toContain('pdf')
 })
 
-test('the Arabic page reads right to left', async ({ page }) => {
+test('the Arabic site is complete and reads right to left', async ({ page }) => {
   await page.goto('/ar')
 
   await expect(page.locator('html')).toHaveAttribute('dir', 'rtl')
   await expect(page.locator('html')).toHaveAttribute('lang', 'ar')
-  await expect(page.getByRole('heading', { level: 1 })).toBeVisible()
+  await expect(page.getByRole('heading', { level: 1 })).toContainText('محمد')
+  await expect(page.locator('#career h2')).toHaveText('ثماني سنوات في خريطة واحدة')
+  await expect(page.locator('details.role')).toHaveCount(6)
+  await expect(page.locator('.labnav button')).toHaveCount(7)
+  await expect(page.locator('#contact h2')).toHaveText('راسل محمدًا')
+  await expect(page.locator('#contact').getByRole('link', { name: 'واتساب' })).toHaveAttribute('href', /wa\.me/)
 })
 
-test('nothing scrolls sideways', async ({ page }) => {
+test('Arabic and English link to each other', async ({ page }) => {
   await page.goto('/')
-
-  const overflow = await page.evaluate(() => document.documentElement.scrollWidth - innerWidth)
-
-  expect(overflow).toBeLessThanOrEqual(0)
+  await page.getByTestId('language').click()
+  await expect(page).toHaveURL(/\/ar/)
+  await page.getByTestId('language').click()
+  await expect(page.getByRole('heading', { level: 1 })).toContainText('Mohamed')
 })
 
-for (const theme of ['dark', 'light']) {
-  test(`has no accessibility violations in ${theme} mode`, async ({ page }) => {
+test('the Arabic skill list stays right-aligned next to the roles', async ({ page, isMobile }) => {
+  test.skip(isMobile, 'the map is one column on a phone')
+  await page.goto('/ar')
+  const skills = await page.locator('.skills').boundingBox()
+  const roles = await page.locator('.roles').boundingBox()
+
+  expect(skills!.x).toBeGreaterThan(roles!.x)
+})
+
+for (const path of ['/', '/ar']) {
+  test(`nothing scrolls sideways on ${path}`, async ({ page }) => {
+    await page.goto(path)
+
+    const overflow = await page.evaluate(() => document.documentElement.scrollWidth - innerWidth)
+
+    expect(overflow).toBeLessThanOrEqual(0)
+  })
+}
+
+for (const [theme, path] of [['dark', '/'], ['light', '/'], ['dark', '/ar'], ['light', '/ar']] as const) {
+  test(`has no accessibility violations in ${theme} mode on ${path}`, async ({ page }) => {
     await page.addInitScript(value => localStorage.setItem('theme', value), theme)
-    await page.goto('/')
+    await page.goto(path)
     await page.locator('details.role').first().waitFor()
 
     const buttons = page.locator('.labnav button')

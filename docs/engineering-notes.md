@@ -63,6 +63,16 @@ const toPlayer = (raw: unknown): Player => Player.parse(raw)
 
 **Approach:** TypeScript was introduced incrementally to enforce consistent data contracts, with strictness tightening as files were touched. Git workflows, review protocols and CI checks were standardised across squads at the same time, so the gain stayed in place.
 
+## Right-to-left and left-to-right from one component
+
+**Setting:** national telecom portals serving Arabic and left-to-right audiences, built on shared Vue component libraries.
+
+**Problem:** mirroring a page by hand creates a second product. Numbers, phone numbers and product names sit inside Arabic sentences and break when direction handling is naive.
+
+**Principle:** one component for both directions, using CSS logical properties and isolated bidirectional text.
+
+**Approach:** components were built to run in both directions. This site shows the same approach: its Arabic and English versions share every component, and only the copy, type and direction change.
+
 ## Tokens as a shared language
 
 **Setting:** design tokens across three squads on e-commerce, and Vue component libraries on shared tokens for national telecom portals.

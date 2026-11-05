@@ -1,8 +1,9 @@
 <script setup lang="ts">
 type View = 'thin' | 'thick'
+const m = useMessages()
 const options: { id: View, label: string }[] = [
-  { id: 'thin', label: 'New or refactored' },
-  { id: 'thick', label: 'Legacy, until it is touched' },
+  { id: 'thin', label: m.demos.thin.thin },
+  { id: 'thick', label: m.demos.thin.thick },
 ]
 const view = ref<View>('thin')
 
@@ -46,17 +47,17 @@ class PlaceOrder
 
 <template>
   <div>
-    <h3>Thick or thin</h3>
+    <h3>{{ m.demos.thin.heading }}</h3>
     <p class="why">
-      New and refactored Laravel controllers are written thin, with logic in services and actions. Older ones stay thick until there is a reason to touch them. DTOs give each request one shape, and a transaction means the operation commits whole or not at all.
+      {{ m.demos.thin.why }}
     </p>
     <p class="principle">
-      Single Responsibility. The Boy Scout Rule. The code here is written for this page.
+      {{ m.demos.thin.principle }}
     </p>
     <ChoiceGroup
       v-model="view"
       :options="options"
-      label="Controller style"
+      :label="m.demos.thin.label"
     />
     <pre tabindex="0">{{ code[view] }}</pre>
   </div>
