@@ -21,7 +21,8 @@
             :href="links.cv"
             download
           >Download CV</a>
-          <a :href="`mailto:${links.email}`">Email</a>
+          <a :href="links.emailApp">Email</a>
+          <a :href="links.whatsapp">WhatsApp</a>
           <a :href="links.linkedin">LinkedIn</a>
           <a :href="links.github">GitHub</a>
         </div>
@@ -82,7 +83,7 @@
         <div class="wrap">
           <h2>Write to Mohamed</h2>
           <p class="intro">
-            Email works best. Your message goes straight to Mohamed.
+            Email or WhatsApp. Either goes straight to Mohamed.
           </p>
           <p class="big contact-address">
             <span class="sel">{{ links.email }}</span>
@@ -94,7 +95,8 @@
               target="_blank"
               rel="noopener"
             >Write in Gmail</a>
-            <a :href="`mailto:${links.email}`">Use your email app</a>
+            <a :href="links.emailApp">Use your email app</a>
+            <a :href="links.whatsapp">WhatsApp</a>
             <a :href="links.linkedin">LinkedIn</a>
             <a
               :href="links.cv"

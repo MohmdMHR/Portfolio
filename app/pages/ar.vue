@@ -25,7 +25,8 @@ useHead({
           :href="links.cv"
           download
         >تحميل السيرة الذاتية</a>
-        <a :href="`mailto:${links.email}`">البريد الإلكتروني</a>
+        <a :href="links.emailApp">البريد الإلكتروني</a>
+        <a :href="links.whatsapp">واتساب</a>
         <a :href="links.linkedin">LinkedIn</a>
         <a :href="links.github">GitHub</a>
         <NuxtLink

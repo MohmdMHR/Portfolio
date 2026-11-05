@@ -32,7 +32,9 @@ test('contact opens Gmail addressed to Mohamed, with email as a fallback', async
 
   expect(gmail.hostname).toBe('mail.google.com')
   expect(gmail.searchParams.get('to')).toBe('mohamdmahir@gmail.com')
-  await expect(contact.getByRole('link', { name: 'Use your email app' })).toHaveAttribute('href', 'mailto:mohamdmahir@gmail.com')
+  expect(gmail.searchParams.get('su')).toBe('Opportunity for Mohamed Mahir')
+  await expect(contact.getByRole('link', { name: 'Use your email app' })).toHaveAttribute('href', /^mailto:mohamdmahir@gmail\.com/)
+  await expect(contact.getByRole('link', { name: 'WhatsApp' })).toHaveAttribute('href', 'https://wa.me/971526769781')
   await expect(contact.getByText('mohamdmahir@gmail.com')).toBeVisible()
 })
 
