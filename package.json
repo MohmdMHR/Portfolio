@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "nuxt dev",
     "build": "nuxt build",
+    "generate": "nuxt build",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
     "typecheck": "nuxt typecheck",
@@ -25,5 +26,8 @@
     "typescript": "5.9.3",
     "vitest": "5.1.0",
     "vue-tsc": "3.3.14"
+  },
+  "engines": {
+    "node": ">=22"
   }
 }
