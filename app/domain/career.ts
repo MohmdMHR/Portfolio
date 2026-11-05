@@ -36,7 +36,7 @@ export const roles: readonly Role[] = [
     employer: null,
     context: 'Multi-store European e-commerce',
     dates: '08/2023 to 07/2024',
-    detail: 'Rewrote high-traffic checkout and minicart with localised payments. Led the migration of core modules to Vue and TypeScript with DDD and test-first. Design tokens across three squads.',
+    detail: 'Re-engineered high-traffic checkout and minicart with localised payments. Led the migration of core checkout modules to Vue and TypeScript with DDD and test-first. Design tokens across three squads.',
   },
   {
     id: 'procurement',

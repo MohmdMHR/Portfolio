@@ -48,7 +48,7 @@ class PlaceOrder
   <div>
     <h3>Thick or thin</h3>
     <p class="why">
-      Real backends have history. New and refactored Laravel controllers are written thin, with logic in services and actions. Older ones stay thick until there is a reason to touch them. DTOs give each request one shape, and a transaction means the operation commits whole or not at all.
+      New and refactored Laravel controllers are written thin, with logic in services and actions. Older ones stay thick until there is a reason to touch them. DTOs give each request one shape, and a transaction means the operation commits whole or not at all.
     </p>
     <p class="principle">
       Single Responsibility. The Boy Scout Rule. The code here is written for this page.

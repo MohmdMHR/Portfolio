@@ -37,7 +37,7 @@ export const scenarios = {
   bypass: {
     label: 'The agent tries to skip a gate',
     stopsAt: 'Type-check',
-    verdict: 'Stopped at the gate it tried to get past. Skipping a check counts as a failure, not a shortcut.',
+    verdict: 'Stopped at the gate it tried to get past. Skipping a check counts as a failure.',
   },
   layer: {
     label: 'Front-end patch hiding a backend bug',

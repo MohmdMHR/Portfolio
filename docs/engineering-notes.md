@@ -10,7 +10,7 @@ How real problems from the work on my CV were solved, and the principles behind 
 
 **Principle:** Open/Closed (Martin). The engine stays closed to modification and open to extension. Separate what varies from what stays.
 
-**Approach:** what varies per brand lives outside the code path: runtime theming, tokenized environment variables, and tenant data resolved by tenant ID. A new brand becomes an onboarding task on one engine, not a new codebase.
+**Approach:** what varies per brand lives outside the code path: runtime theming, tokenized environment variables, and tenant data resolved by tenant ID. New brands onboard from a single engine.
 
 ## Stopping contract drift at the boundary
 
@@ -29,11 +29,11 @@ const Player = z.object({
 })
 type Player = z.infer<typeof Player>
 
-// Beyond this line the app holds a Player, not "probably a player".
+// Beyond this line the app holds a checked Player.
 const toPlayer = (raw: unknown): Player => Player.parse(raw)
 ```
 
-## Thin where it is new, honest where it is legacy
+## Thin controllers in a legacy backend
 
 **Setting:** Laravel endpoints behind the platform, a codebase with history.
 
@@ -49,9 +49,9 @@ const toPlayer = (raw: unknown): Player => Player.parse(raw)
 
 **Problem:** checkout rules were tangled with presentation, so a UI change could break a business rule, and revenue was at risk during any rewrite.
 
-**Principle:** Bounded Context and Anti-Corruption Layer (Evans), the Dependency Rule (Martin), test-first (Beck), and separating deploy from release with feature flags.
+**Principle:** Domain-Driven Design (Evans), the Dependency Rule (Martin), test-first (Beck), and separating deploy from release with feature flags.
 
-**Approach:** a total rewrite, proven in staging, with much of the development behind feature flags so unfinished work could ship without reaching customers. Domain rules were isolated from UI presentation and written test-first, so they could be read and tested without rendering a component. Contract compatibility with Symfony services was kept strict, so backend shapes stayed out of the domain.
+**Approach:** a total rewrite, proven in staging, with much of the development behind feature flags so unfinished work could ship without reaching customers. Domain rules were isolated from UI presentation and written test-first, so they could be read and tested without rendering a component. Contract compatibility with Symfony services was kept strict.
 
 ## Introducing TypeScript to code that was already running
 
@@ -61,7 +61,7 @@ const toPlayer = (raw: unknown): Player => Player.parse(raw)
 
 **Principle:** seams (Feathers, *Working Effectively with Legacy Code*), and the Boy Scout Rule (Martin): leave the code cleaner than you found it.
 
-**Approach:** TypeScript was introduced incrementally, with data contracts first and strictness tightening as files were touched. Git workflows, review protocols and CI checks were standardised across squads at the same time, so the gain stayed in place.
+**Approach:** TypeScript was introduced incrementally to enforce consistent data contracts, with strictness tightening as files were touched. Git workflows, review protocols and CI checks were standardised across squads at the same time, so the gain stayed in place.
 
 ## Tokens as a shared language
 
@@ -71,7 +71,7 @@ const toPlayer = (raw: unknown): Player => Player.parse(raw)
 
 **Principle:** Ubiquitous Language (Evans), applied between design and code.
 
-**Approach:** decisions were named once as tokens and consumed everywhere. This is the same idea that later made runtime brand theming possible.
+**Approach:** decisions were named once as tokens and consumed everywhere.
 
 ## Accessibility built into the component
 
@@ -87,9 +87,9 @@ const toPlayer = (raw: unknown): Player => Player.parse(raw)
 
 **Setting:** NestJS microservices and PostgreSQL schemas for coupon generation, POS redemption and analytics, with React dashboards.
 
-**Problem:** a coupon crosses systems, and a point-of-sale terminal retries when the network fails. Access rules scattered through handlers are easy to miss.
+**Problem:** a coupon crosses systems, and a point-of-sale terminal retries when the network fails.
 
-**Principle:** idempotency, Dependency Inversion (Martin) through dependency injection, and cross-cutting concerns kept out of business logic.
+**Principle:** idempotency, and Dependency Inversion (Martin) through dependency injection.
 
 **Approach:** redemption is idempotent, so a retry cannot redeem twice. Clean service layers with dependency injection, REST APIs documented in Swagger, JWT authentication, role-based access control and rate limiting.
 
@@ -107,18 +107,18 @@ const toPlayer = (raw: unknown): Player => Player.parse(raw)
 
 **Setting:** the team's engineering workflow.
 
-**Problem:** generated code arrives faster than anyone can review it. Without constraints, speed turns into inconsistency.
+**Problem:** generated code arrives faster than anyone can review it.
 
 **Principle:** contract-first. Strict domain modelling stays the ground truth, and AI accelerates execution inside it.
 
 **Approach:**
 - Custom skills encode the team's conventions, constrained by domain interface models, so changes stay scoped.
-- Tasks start from a plan, not a prompt.
+- Every task starts from a plan.
 - Strict TypeScript and DDD boundaries give the agent walls to work within. Tests come first, so it has a failing spec to satisfy.
 - Type-check, lint, Vitest and Playwright block the merge, with human PR review after them.
 
 **What gets rejected:**
 - **Design decisions, most of all.** Code can pass every check and still be the wrong design. That call stays with the engineer.
 - **Things only visible on screen.** Some decisions were rejected only after visual QA of the running UI, with the tests already green.
-- **Bypassing a gate.** An agent trying to get past a gate is treated as a failure, not a shortcut.
+- **Bypassing a gate.** An agent trying to get past a gate is treated as a failure.
 - **A fix in the wrong layer.** It wrote front-end code to cover a backend issue without saying so. A workaround like that hides the real bug, so it was rejected.

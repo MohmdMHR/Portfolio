@@ -11,10 +11,10 @@ const production = computed(() => checkoutFor(flags.value, 'production'))
   <div>
     <h3>Ship a rewrite nobody sees yet</h3>
     <p class="why">
-      A high-traffic checkout was totally rewritten in Vue and TypeScript and proven in staging, with much of the development behind feature flags. Domain rules were pulled out of the UI and written test-first. Merging code and releasing it stopped being the same decision.
+      A high-traffic checkout was totally rewritten in Vue and TypeScript and proven in staging, with much of the development behind feature flags. Domain rules were pulled out of the UI and written test-first. Code could merge long before customers saw it.
     </p>
     <p class="principle">
-      Bounded Context. Anti-Corruption Layer. Test-first. Separate deploy from release.
+      Domain-Driven Design. Test-first. Separate deploy from release.
     </p>
     <div class="ctrl">
       <button

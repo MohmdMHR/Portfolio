@@ -15,7 +15,7 @@ const tokens = computed(() => JSON.stringify({
   <div>
     <h3>Rebrand the product</h3>
     <p class="why">
-      Every new brand is a chance to fork the product. On a multi-tenant platform with 4 React white-label platforms built from scratch, what varies lives outside the code path: runtime theming, tokenized environment variables, tenant data resolved by tenant ID. Switch brands. The components stay the same.
+      Every new brand is a chance to fork the product. Across a multi-tenant iGaming engine and 4 React white-label platforms built from scratch, what varies lives outside the code path: runtime theming, tokenized environment variables, tenant data resolved by tenant ID. Switch brands. The components stay the same.
     </p>
     <p class="principle">
       Open/Closed. Separate what varies from what stays.

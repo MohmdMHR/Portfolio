@@ -48,7 +48,7 @@
           <div class="also">
             <div>
               <h3>TypeScript into running code</h3>
-              <p>A big-bang rewrite was off the table. It came in incrementally, data contracts first, with strictness tightening as files were touched. Seams, and the Boy Scout Rule.</p>
+              <p>A big-bang rewrite was off the table. It came in incrementally, with strictness tightening as files were touched. Seams, and the Boy Scout Rule.</p>
             </div>
             <div>
               <h3>Tokens as a shared language</h3>

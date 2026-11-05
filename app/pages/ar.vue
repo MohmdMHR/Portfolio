@@ -1,7 +1,7 @@
 <script setup lang="ts">
 useHead({
   htmlAttrs: { lang: 'ar', dir: 'rtl' },
-  title: 'محمد ماهر، قائد واجهات أمامية ومهندس برمجيات أول',
+  title: 'محمد ماهر، قائد تطوير الواجهات الأمامية ومهندس Full-Stack أول',
 })
 </script>
 
@@ -11,10 +11,10 @@ useHead({
     <div class="wrap">
       <h1>محمد ماهر</h1>
       <p class="title">
-        قائد واجهات أمامية ومهندس برمجيات أول متكامل
+        قائد تطوير الواجهات الأمامية ومهندس Full-Stack أول
       </p>
       <p class="lead">
-        أكثر من 8 سنوات في منصات iGaming والتجارة الإلكترونية والقطاع العام. مقيم في دبي، الإمارات.
+        أكثر من 8 سنوات من الخبرة في منصات iGaming والتجارة الإلكترونية والقطاع العام. مقيم في دبي، الإمارات.
       </p>
       <p class="stack">
         <span class="ltr">React, Vue, Nuxt, TypeScript, Node.js, NestJS, Laravel</span>. أعمل بالعربية والإنجليزية والفرنسية.
