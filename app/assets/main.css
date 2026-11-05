@@ -125,3 +125,8 @@ html{scroll-behavior:smooth}
 .roles{align-content:start}
 section{scroll-margin-top:72px}
 .contact-address{margin:22px 0 0;overflow-wrap:anywhere}
+:root{--wa:#25D366;--on-wa:#06281A}
+.btn.wa,.btn.mail{display:inline-flex;align-items:center;gap:9px}
+.btn.wa{background:var(--wa);color:var(--on-wa)}
+.btn.mail{background:transparent;color:var(--fg);box-shadow:inset 0 0 0 2px var(--fg)}
+.hero .cta .btn{text-decoration:none}

@@ -21,8 +21,14 @@
             :href="links.cv"
             download
           >Download CV</a>
-          <a :href="links.emailApp">Email</a>
-          <a :href="links.whatsapp">WhatsApp</a>
+          <a
+            class="btn wa"
+            :href="links.whatsapp"
+          ><IconWhatsApp />WhatsApp</a>
+          <a
+            class="btn mail"
+            :href="links.emailApp"
+          ><IconMail />Email</a>
           <a :href="links.linkedin">LinkedIn</a>
           <a :href="links.github">GitHub</a>
         </div>
@@ -83,20 +89,23 @@
         <div class="wrap">
           <h2>Write to Mohamed</h2>
           <p class="intro">
-            Email or WhatsApp. Either goes straight to Mohamed.
+            WhatsApp or email. Either goes straight to Mohamed.
           </p>
           <p class="big contact-address">
             <span class="sel">{{ links.email }}</span>
           </p>
           <div class="cta">
             <a
-              class="btn"
+              class="btn wa"
+              :href="links.whatsapp"
+            ><IconWhatsApp />WhatsApp</a>
+            <a
+              class="btn mail"
               :href="links.gmail"
               target="_blank"
               rel="noopener"
-            >Write in Gmail</a>
+            ><IconMail />Write in Gmail</a>
             <a :href="links.emailApp">Use your email app</a>
-            <a :href="links.whatsapp">WhatsApp</a>
             <a :href="links.linkedin">LinkedIn</a>
             <a
               :href="links.cv"
