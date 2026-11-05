@@ -6,7 +6,6 @@ Personal site: Front-End Lead and Senior Full-Stack Engineer, Dubai. The site is
 
 - [`docs/engineering-notes.md`](docs/engineering-notes.md): real problems from work on my CV, the principle behind each call, and the approach.
 - [`app/domain`](app/domain): the logic behind the demos, with no framework in it and tested first in [`tests/unit`](tests/unit).
-- [`server/utils/contact.ts`](server/utils/contact.ts): the contact form parses at the boundary and only reports success after delivery.
 - [`tests/e2e`](tests/e2e): Playwright checks, including the recruiter's answer with JavaScript off and accessibility in both themes.
 - [`.github/workflows/ci.yml`](.github/workflows/ci.yml): type-check, lint, unit and end-to-end gates on every push.
 
@@ -24,5 +23,3 @@ npm run typecheck && npm run lint && npm test && npm run build && npm run test:e
 ```
 
 The first end-to-end run needs `npx playwright install chromium`.
-
-The contact form needs the settings in `.env.example`. Without them it refuses honestly with a 503, and the page points to email.

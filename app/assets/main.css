@@ -124,3 +124,4 @@ html{scroll-behavior:smooth}
 .note.good,.big.good{color:var(--pass)}
 .roles{align-content:start}
 section{scroll-margin-top:72px}
+.contact-address{margin:22px 0 0;overflow-wrap:anywhere}

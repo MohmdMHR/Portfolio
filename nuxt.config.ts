@@ -7,11 +7,6 @@ export default defineNuxtConfig({
   typescript: { strict: true, typeCheck: false },
   devtools: { enabled: false },
   telemetry: false,
-  runtimeConfig: {
-    resendApiKey: '',
-    contactTo: '',
-    contactFrom: '',
-  },
   app: {
     head: {
       htmlAttrs: { lang: 'en' },

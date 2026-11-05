@@ -81,26 +81,25 @@
       >
         <div class="wrap">
           <h2>Write to Mohamed</h2>
-          <div class="footer-grid">
-            <div>
-              <p class="plain">
-                Email: <a
-                  class="sel"
-                  :href="`mailto:${links.email}`"
-                >{{ links.email }}</a>
-              </p>
-              <p class="plain">
-                <a :href="links.linkedin">LinkedIn</a> and <a :href="links.github">GitHub</a>
-              </p>
-              <p class="plain spaced">
-                <a
-                  class="btn"
-                  :href="links.cv"
-                  download
-                >Download CV</a>
-              </p>
-            </div>
-            <ContactForm />
+          <p class="intro">
+            Email works best. Your message goes straight to Mohamed.
+          </p>
+          <p class="big contact-address">
+            <span class="sel">{{ links.email }}</span>
+          </p>
+          <div class="cta">
+            <a
+              class="btn"
+              :href="links.gmail"
+              target="_blank"
+              rel="noopener"
+            >Write in Gmail</a>
+            <a :href="`mailto:${links.email}`">Use your email app</a>
+            <a :href="links.linkedin">LinkedIn</a>
+            <a
+              :href="links.cv"
+              download
+            >Download CV</a>
           </div>
         </div>
       </section>

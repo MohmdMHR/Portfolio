@@ -87,35 +87,3 @@ test('rebranding changes the tokens', async ({ page }) => {
   await expect(page.locator('.lab:visible pre')).toContainText('#C2410C')
   await expect(page.locator('.tile')).toHaveText('Good to see you')
 })
-
-test.describe('the contact form', () => {
-  const fill = async (page: import('@playwright/test').Page) => {
-    await page.getByLabel('Your name').fill('Sara')
-    await page.getByLabel('Your email').fill('sara@example.com')
-    await page.getByLabel('Message').fill('We have a role for you.')
-    await page.getByRole('button', { name: 'Send' }).click()
-  }
-
-  test('says sent only when delivery succeeded', async ({ page }) => {
-    await page.route('**/api/contact', route => route.fulfill({ status: 200, json: { ok: true } }))
-    await fill(page)
-
-    await expect(page.getByTestId('form-status')).toContainText('Sent.')
-  })
-
-  test('never fakes success when delivery fails', async ({ page }) => {
-    await page.route('**/api/contact', route => route.fulfill({ status: 502, json: { ok: false } }))
-    await fill(page)
-
-    await expect(page.getByTestId('form-status')).toContainText('did not send')
-    await expect(page.getByTestId('form-status')).not.toContainText('Sent.')
-  })
-
-  test('with no mail settings the real endpoint refuses', async ({ request }) => {
-    const response = await request.post('/api/contact', {
-      data: { name: 'Sara', email: 'sara@example.com', message: 'Hello' },
-    })
-
-    expect(response.status()).toBe(503)
-  })
-})

@@ -11,8 +11,8 @@ test.describe('the recruiter answer', () => {
     await expect(page.getByText('Front-End Lead and Senior Full-Stack Engineer')).toBeVisible()
     await expect(page.getByText('Based in Dubai, UAE')).toBeVisible()
     await expect(page.getByText('React, Vue, Nuxt, TypeScript')).toBeVisible()
-    await expect(page.locator('.cta').getByRole('link', { name: 'Download CV' })).toHaveAttribute('href', '/Mohamed-Mahir-CV.pdf')
-    await expect(page.locator('.cta').getByRole('link', { name: 'Email' })).toHaveAttribute('href', /^mailto:/)
+    await expect(page.locator('.hero .cta').getByRole('link', { name: 'Download CV' })).toHaveAttribute('href', '/Mohamed-Mahir-CV.pdf')
+    await expect(page.locator('.hero .cta').getByRole('link', { name: 'Email' })).toHaveAttribute('href', /^mailto:/)
   })
 
   test('opens a role with JavaScript off', async ({ page }) => {
@@ -23,6 +23,17 @@ test.describe('the recruiter answer', () => {
 
     await expect(role.getByText('Laravel REST APIs')).toBeVisible()
   })
+})
+
+test('contact opens Gmail addressed to Mohamed, with email as a fallback', async ({ page }) => {
+  await page.goto('/')
+  const contact = page.locator('#contact')
+  const gmail = new URL(await contact.getByRole('link', { name: 'Write in Gmail' }).getAttribute('href') ?? '')
+
+  expect(gmail.hostname).toBe('mail.google.com')
+  expect(gmail.searchParams.get('to')).toBe('mohamdmahir@gmail.com')
+  await expect(contact.getByRole('link', { name: 'Use your email app' })).toHaveAttribute('href', 'mailto:mohamdmahir@gmail.com')
+  await expect(contact.getByText('mohamdmahir@gmail.com')).toBeVisible()
 })
 
 test('serves the CV', async ({ request }) => {
