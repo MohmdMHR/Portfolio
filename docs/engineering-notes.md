@@ -75,7 +75,7 @@ const toPlayer = (raw: unknown): Player => Player.parse(raw)
 
 ## Accessibility built into the component
 
-**Setting:** Vue and Nuxt packages in a micro-frontend architecture on enterprise Java services, for a public procurement platform on the ARA Design System.
+**Setting:** Vue and Nuxt packages in a micro-frontend architecture on enterprise Java services, for a public procurement platform.
 
 **Problem:** accessibility fixed page by page gets lost at the next change.
 
