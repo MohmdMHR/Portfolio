@@ -39,6 +39,51 @@ const m = useMessages()
         </div>
       </div>
 
+      <section id="work">
+        <div class="wrap">
+          <h2>{{ m.work.heading }}</h2>
+          <p class="intro">
+            {{ m.work.intro }}
+          </p>
+          <ul class="work">
+            <li
+              v-for="item in m.work.items"
+              :key="item.name"
+            >
+              <p class="via">
+                <bdi>{{ item.via }}</bdi>
+              </p>
+              <h3>{{ item.name }}</h3>
+              <p class="part">
+                {{ item.part }}
+              </p>
+              <p
+                v-if="item.result"
+                class="result"
+              >
+                {{ item.result }}
+              </p>
+              <p class="wstack">
+                <bdi>{{ item.stack }}</bdi>
+              </p>
+              <a
+                v-if="item.url"
+                class="site"
+                :href="item.url"
+                target="_blank"
+                rel="noopener"
+              ><bdi>{{ item.site }}</bdi></a>
+              <p
+                v-else
+                class="site private"
+              >
+                {{ m.work.privateLabel }}
+              </p>
+            </li>
+          </ul>
+        </div>
+      </section>
+
       <section id="career">
         <div class="wrap">
           <h2>{{ m.career.heading }}</h2>

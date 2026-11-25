@@ -7,6 +7,7 @@ export const ar: Messages = {
   },
   nav: {
     label: 'القائمة الرئيسية',
+    work: 'أعمال مختارة',
     career: 'المسيرة المهنية',
     demos: 'التجارب التفاعلية',
     code: 'الكود',
@@ -34,6 +35,19 @@ export const ar: Messages = {
     lead: '8 سنوات في بناء منصات الويب للألعاب الإلكترونية والتجارة الإلكترونية للمؤسسات وتقنيات التجزئة والقطاع العام. مقيم في دبي، الإمارات.',
     stack: 'React و Vue و Nuxt بلغة TypeScript، فوق خدمات Node.js (NestJS) المصغرة و Laravel. واجهات RTL و LTR. العربية والإنجليزية والفرنسية.',
   },
+  work: {
+    heading: 'أعمال مختارة',
+    intro: 'المنتجات التي تقف خلف السيرة الذاتية: ما هو كل منتج، والجزء الذي أنجزته فيه، وأين يمكن رؤيته.',
+    privateLabel: 'منصة داخلية منشورة على بيئة الاختبار (staging). لا يوجد رابط عام بعد.',
+    items: [
+      { name: 'Kamera Express', url: 'https://www.kamera-express.nl/', site: 'kamera-express.nl', via: 'SQLI', part: 'بحث Algolia في صفحات المنتجات ونتائج البحث، وإصلاح مشكلات الـ hydration في SSR، وتحسين Core Web Vitals منفردًا.', stack: 'Vue 2 (Composition API), Nuxt 2, Algolia, Pinia', result: 'تحميل PageSpeed أسرع بـ 10%، و 8 نقاط إضافية في Lighthouse SEO' },
+      { name: 'Carrefour', url: 'https://www.carrefour.fr/', site: 'carrefour.fr', via: 'Carrefour', part: 'عضو أساسي في الانتقال من Vue 2 إلى Vue 3. مسار الدفع من السلة المصغرة حتى الدفع، ومواعيد التوصيل.', stack: 'Vue 3, TypeScript, DDD, Jest, Storybook', result: '' },
+      { name: 'منصات ألعاب بنظام العلامة البيضاء', url: '', site: '', via: 'Cactus Gaming', part: 'قائد تقني. 4 منصات React بُنيت من الصفر على محرك واحد مع مظهر خاص بكل علامة تجارية.', stack: 'React Router, Vite SSR, Zod, Cloudflare Workers', result: 'معتمدة للإطلاق' },
+      { name: 'HighCo CouponAI', url: 'https://www.highco.com/en/', site: 'highco.com/en', via: 'Atos', part: 'تطبيق قسائم جديد متكامل بُني منفردًا، مع تحديد معدل الطلبات يمنع استخدام القسيمة مرتين.', stack: 'React, NestJS microservices, PostgreSQL, JWT', result: '' },
+      { name: 'UGAP', url: 'https://ugap.fr/', site: 'ugap.fr', via: 'Atos', part: 'صفحات البحث بالفلاتر وقوائم المنتجات وتفاصيلها للجهة الفرنسية للمشتريات العامة، مع مراعاة معايير WCAG.', stack: 'Vue 2, Nuxt 2, Ara micro-frontends, Apache Solr', result: '' },
+      { name: 'inwi', url: 'https://www.inwi.ma/', site: 'inwi.ma', via: 'Gear9', part: 'النسخة الأولى من منصة التجارة الإلكترونية، ونظام التصميم الخاص بها، وتخطيطات من اليمين إلى اليسار.', stack: 'Vue 2 PWA, Vue Storefront, Elasticsearch, Magento 2', result: '' },
+    ],
+  },
   career: {
     heading: 'ثماني سنوات في خريطة واحدة',
     intro: 'اختر مهارة لترى أين استُخدمت، وافتح أي وظيفة لتعرف ما أُنجز فيها. كل جهة عمل وكل عميل مذكور باسمه ومرتبط بموقعه، كما في السيرة الذاتية.',
@@ -45,6 +59,7 @@ export const ar: Messages = {
         title: 'قائد تقني للواجهات الأمامية / مطور Full-⁠Stack أول',
         location: 'دبي، الإمارات (في المقر)',
         dates: '01/2026 – حتى الآن',
+        brief: 'قائد تقني لـ 4 منصات React بنظام العلامة البيضاء، وواجهة اللاعب بـ Vue 3 / Nuxt 3، ولوحة الإدارة، والواجهة الخلفية بـ Laravel.',
         context: 'قائد تقني لمنصات ألعاب إلكترونية متعددة المستأجرين (Multi-tenant) بنظام العلامة البيضاء (white-label)، تخدم علامات تجارية متعددة لمشغلين مختلفين.',
         outcomes: [
           'صمّم وبنى من الصفر 4 منصات React بنظام العلامة البيضاء: نماذج المجال والبيانات، و React Router مع العرض من جهة الخادم (SSR) عبر Vite، و CI/CD عبر GitHub Actions للنشر على Cloudflare Workers باستخدام Wrangler. المنصات الأربع منشورة على بيئة الاختبار (staging) ومعتمدة للإطلاق.',
@@ -60,6 +75,7 @@ export const ar: Messages = {
         title: 'مطور واجهات أمامية (عقد)',
         location: 'هولندا (عن بُعد من المغرب)',
         dates: '10/2024 – 08/2025',
+        brief: 'بحث Algolia، وإصلاح مشكلات الـ hydration في SSR، وتحسين Core Web Vitals منفردًا على kamera-express.nl: تحميل PageSpeed أسرع بـ 10% و 8 نقاط إضافية في Lighthouse SEO.',
         context: 'Kamera Express، متجر كاميرات ومعدات تصوير يبيع في عدة أسواق أوروبية، مبني على Vue Storefront و Nuxt 2.',
         outcomes: [
           'دمج بحث Algolia بالذكاء الاصطناعي والتصفح بالفلاتر في صفحات قوائم المنتجات ونتائج البحث عبر Vue InstantSearch، مع العرض من جهة الخادم في Nuxt 2، وأعاد كتابة أجزاء من نواة المكتبة لتعمل على بيئة Vue 2 تنفذ كود Composition API.',
@@ -73,6 +89,7 @@ export const ar: Messages = {
         title: 'مطور واجهات أمامية (عقد)',
         location: 'فرنسا (عن بُعد من المغرب)',
         dates: '08/2023 – 07/2024',
+        brief: 'عضو أساسي في الانتقال من Vue 2 إلى Vue 3 و TypeScript، عبر فرق الدفع ومواعيد التوصيل وتقنيات الإعلان.',
         context: 'منصة Carrefour للتجارة الإلكترونية متعددة المتاجر في فرنسا، بعد إعادة بنائها حول التصميم الموجه بالمجال (DDD). عمل مع ثلاثة فرق: الدفع والسلة، ومواعيد التوصيل والاستلام، وتقنيات الإعلان.',
         outcomes: [
           'أعاد بناء وحدات أساسية في المنصة من Vue 2 إلى Vue 3 و TypeScript مجالًا بعد مجال، بصفته عضوًا أساسيًا في عملية النقل، مع فرض حدود DDD ونماذج البيانات التي قادتها.',
@@ -86,6 +103,7 @@ export const ar: Messages = {
         title: 'مطور Full-⁠Stack',
         location: 'فرنسا (عن بُعد من المغرب)',
         dates: '08/2021 – 07/2023',
+        brief: 'بنى تطبيق HighCo CouponAI منفردًا بـ React فوق خدمات NestJS المصغرة، وصفحات البحث والكتالوج لـ UGAP على واجهات Ara المصغرة و Solr.',
         context: 'مشاريع لعملاء: HighCo CouponAI، و UGAP، الجهة الفرنسية للمشتريات العامة.',
         outcomes: [
           'HighCo CouponAI: بنى وحده تطبيق قسائم Full-⁠Stack جديدًا، بواجهة React تحل محل مشروع Vue 2 قديم، فوق واجهة خلفية من خدمات NestJS المصغرة على PostgreSQL.',
@@ -99,6 +117,7 @@ export const ar: Messages = {
         title: 'مطور واجهات أمامية',
         location: 'الدار البيضاء، المغرب (في المقر)',
         dates: '09/2020 – 08/2021',
+        brief: 'النسخة الأولى من منصة inwi للتجارة الإلكترونية (PWA) مع نظام التصميم وتخطيطات RTL، إضافة إلى منصة win المبنية بـ Nuxt.',
         context: 'منصات الاتصالات لـ inwi و win.',
         outcomes: [
           'سلّم الإصدار الأول من منصة inwi للتجارة الإلكترونية بصفته عضوًا في الفريق منذ اليوم الأول، من البنية حتى النشر: تطبيق PWA بـ Vue 2 على إصدار مبكر من Vue Storefront، فوق Elasticsearch مفهرس من واجهة Magento 2 خلفية (headless).',
@@ -113,6 +132,7 @@ export const ar: Messages = {
         title: 'مطور Full-⁠Stack',
         location: 'الدار البيضاء، المغرب (في المقر)',
         dates: '10/2018 – 09/2020',
+        brief: 'تطبيق لتتبع الأساطيل بـ Vue 2 و Leaflet حلّ تدريجيًا محل تطبيق AngularJS، فوق واجهات Laravel.',
         context: 'منصة لتتبع الأساطيل والخدمات اللوجستية لحظيًا.',
         outcomes: [
           'صمّم وبنى تطبيق SPA لإدارة الأساطيل بـ Vue 2 مع Vuetify و Leaflet.js، حلّ تدريجيًا محل تطبيق AngularJS العامل في بيئة الإنتاج، ونقل الخرائط من Google Maps المكلفة إلى Leaflet مفتوحة المصدر.',

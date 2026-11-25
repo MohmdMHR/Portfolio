@@ -10,6 +10,23 @@ const map = useTemplateRef<HTMLElement>('map')
 const hits = computed(() => new Set(rolesUsing(active.value).map(role => role.id)))
 const anyHit = computed(() => hits.value.size > 0)
 
+// The newest role opens first. Picking a skill opens the newest role that used it,
+// so the work behind the skill is on screen without a second click.
+const open = ref(new Set<string>([roles[0]!.id]))
+watch(active, () => {
+  const first = rolesUsing(active.value)[0]
+  if (first) open.value = new Set([first.id])
+})
+function onToggle(id: string, event: Event) {
+  const isOpen = (event.target as HTMLDetailsElement).open
+  if (isOpen === open.value.has(id)) return redraw()
+  const next = new Set(open.value)
+  if (isOpen) next.add(id)
+  else next.delete(id)
+  open.value = next
+  redraw()
+}
+
 function drawLinks() {
   const host = map.value
   if (!host || innerWidth <= 820) {
@@ -76,12 +93,12 @@ onBeforeUnmount(() => window.removeEventListener('resize', drawLinks))
     </div>
     <div class="roles">
       <details
-        v-for="(role, index) in roles"
+        v-for="role in roles"
         :key="role.id"
         class="role"
         :class="{ hit: hits.has(role.id), dim: anyHit && !hits.has(role.id) }"
-        :open="index === 0"
-        @toggle="redraw"
+        :open="open.has(role.id)"
+        @toggle="onToggle(role.id, $event)"
       >
         <summary>
           <span class="t">
@@ -89,6 +106,18 @@ onBeforeUnmount(() => window.removeEventListener('resize', drawLinks))
             <bdi>{{ role.employer }}</bdi>
           </span>
           <span class="m">{{ m.career.roles[role.id].location }}. <bdi>{{ m.career.roles[role.id].dates }}</bdi></span>
+          <span class="b">{{ m.career.roles[role.id].brief }}</span>
+          <span
+            class="tags"
+            role="list"
+            :aria-label="m.career.techLabel"
+          >
+            <span
+              v-for="tag in role.tech"
+              :key="tag"
+              role="listitem"
+            ><bdi>{{ tag }}</bdi></span>
+          </span>
         </summary>
         <div class="d">
           <p class="ctx">
@@ -113,17 +142,6 @@ onBeforeUnmount(() => window.removeEventListener('resize', drawLinks))
               :key="outcome"
             >
               {{ outcome }}
-            </li>
-          </ul>
-          <ul
-            class="tags"
-            :aria-label="m.career.techLabel"
-          >
-            <li
-              v-for="tag in role.tech"
-              :key="tag"
-            >
-              <bdi>{{ tag }}</bdi>
             </li>
           </ul>
         </div>

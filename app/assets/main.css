@@ -165,3 +165,25 @@ pre{direction:ltr;text-align:left;unicode-bidi:isolate}
 [dir="rtl"] h1{font-size:clamp(60px,10vw,150px);line-height:1.2}
 [dir="rtl"] h1 br{display:none}
 @media(max-width:760px){header.bar{position:static}}
+
+/* Hero sized so the title sits on one line and the buttons are above the fold on a laptop */
+.hero .wrap{padding-block:clamp(32px,4.5vw,64px) clamp(32px,4vw,56px)}
+h1{font-size:clamp(72px,min(12.5vw,21vh),190px)}
+.title{max-width:none}
+/* Closed roles still say what happened there */
+.role .b{display:block;margin-top:8px;font-size:16px;line-height:1.45;font-weight:400}
+.role summary .tags{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0 0}
+.role summary .tags>span{background:var(--surface2);border:1px solid var(--line);border-radius:999px;padding:2px 9px;font-size:13px;line-height:1.4;font-weight:500}
+.role[open] summary{padding-bottom:6px}
+/* Selected work */
+.work{list-style:none;padding:0;margin:36px 0 0;display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(min(100%,340px),1fr))}
+.work li{display:flex;flex-direction:column;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:20px 22px}
+.work .via{margin:0;color:var(--muted);font-size:14px;font-weight:600;letter-spacing:.04em;text-transform:uppercase}
+.work h3{margin:4px 0 0;font-family:var(--display);font-weight:800;text-transform:uppercase;font-size:clamp(28px,2.6vw,36px);line-height:1}
+.work .part{margin:10px 0 0;font-size:17px;line-height:1.5}
+.work .result{margin:10px 0 0;color:var(--pass);font-weight:700;font-size:16px}
+.work .wstack{margin:10px 0 0;color:var(--muted);font-size:15px}
+.work .site{margin-top:auto;padding-top:14px;font-weight:600;font-size:16px}
+.work .private{color:var(--muted);font-weight:500;font-size:15px}
+[dir="rtl"] .work h3,[dir="rtl"] .work .via{text-transform:none;letter-spacing:0}
+.role[open] summary .b{display:none}

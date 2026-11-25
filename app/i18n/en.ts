@@ -10,6 +10,7 @@ export const en = {
   },
   nav: {
     label: 'Main',
+    work: 'Work',
     career: 'Career',
     demos: 'Demos',
     code: 'Code',
@@ -37,6 +38,19 @@ export const en = {
     lead: '8 years building web platforms in online gaming, enterprise e-commerce, retail tech and the public sector. Based in Dubai, UAE.',
     stack: 'React, Vue and Nuxt in TypeScript, over Node.js (NestJS) microservices and Laravel. RTL and LTR interfaces. English, French and Arabic.',
   },
+  work: {
+    heading: 'Selected work',
+    intro: 'The products behind the CV: what each one is, the part that was mine, and where to see it.',
+    privateLabel: 'Internal platform, deployed to staging. No public link yet.',
+    items: [
+      { name: 'Kamera Express', url: 'https://www.kamera-express.nl/', site: 'kamera-express.nl', via: 'SQLI', part: 'Algolia search on listing and search pages, SSR hydration fixes, and a solo Core Web Vitals overhaul.', stack: 'Vue 2 (Composition API), Nuxt 2, Algolia, Pinia', result: '+10% PageSpeed load, +8 Lighthouse SEO' },
+      { name: 'Carrefour', url: 'https://www.carrefour.fr/', site: 'carrefour.fr', via: 'Carrefour', part: 'Core member of the Vue 2 to Vue 3 migration. Checkout from minicart to payment, and delivery time slots.', stack: 'Vue 3, TypeScript, DDD, Jest, Storybook', result: '' },
+      { name: 'White-label gaming platforms', url: '', site: '', via: 'Cactus Gaming', part: 'Technical lead. 4 React platforms built from the ground up, on one engine with per-brand theming.', stack: 'React Router, Vite SSR, Zod, Cloudflare Workers', result: 'Approved for launch' },
+      { name: 'HighCo CouponAI', url: 'https://www.highco.com/en/', site: 'highco.com/en', via: 'Atos', part: 'A new full-stack coupon application, built solo, with rate limiting that stops a coupon being redeemed twice.', stack: 'React, NestJS microservices, PostgreSQL, JWT', result: '' },
+      { name: 'UGAP', url: 'https://ugap.fr/', site: 'ugap.fr', via: 'Atos', part: 'Faceted search, listing and product pages for the French public procurement agency, built for WCAG accessibility.', stack: 'Vue 2, Nuxt 2, Ara micro-frontends, Apache Solr', result: '' },
+      { name: 'inwi', url: 'https://www.inwi.ma/', site: 'inwi.ma', via: 'Gear9', part: 'The first version of the e-commerce platform, its design system, and right-to-left layouts.', stack: 'Vue 2 PWA, Vue Storefront, Elasticsearch, Magento 2', result: '' },
+    ],
+  },
   career: {
     heading: 'Eight years, one map',
     intro: 'Pick a skill to see where it was used. Open a role for what happened there. Every employer and client is named and linked to its site, as on the CV.',
@@ -48,6 +62,7 @@ export const en = {
         title: 'Front-End Tech Lead / Senior Full-Stack Developer',
         location: 'Dubai, UAE (On-site)',
         dates: '01/2026 – Present',
+        brief: 'Technical lead across 4 React white-label platforms, the Vue 3 / Nuxt 3 player frontend, the back office and the Laravel backend.',
         context: 'Technical lead for multi-tenant, white-label online gaming platforms serving multiple operator brands.',
         outcomes: [
           'Architected and built 4 React white-label platforms from the ground up: domain and data models, React Router with Vite server-side rendering, and GitHub Actions CI/CD deploying to Cloudflare Workers through Wrangler. All four are deployed to staging and approved for launch.',
@@ -63,6 +78,7 @@ export const en = {
         title: 'Front-End Developer (Contract)',
         location: 'Netherlands (Remote from Morocco)',
         dates: '10/2024 – 08/2025',
+        brief: 'Algolia search, SSR hydration fixes and a solo Core Web Vitals overhaul on kamera-express.nl: +10% PageSpeed load, +8 Lighthouse SEO.',
         context: 'Kamera Express, a camera and photography retailer selling across several European markets, built on Vue Storefront and Nuxt 2.',
         outcomes: [
           'Integrated Algolia AI Search and faceted navigation on product listing and search results pages with Vue InstantSearch, server-rendered through Nuxt 2, rewriting parts of the library\'s core to run on a Vue 2 runtime executing Composition API code.',
@@ -76,6 +92,7 @@ export const en = {
         title: 'Front-End Developer (Contract)',
         location: 'France (Remote from Morocco)',
         dates: '08/2023 – 07/2024',
+        brief: 'Core member of the Vue 2 to Vue 3 and TypeScript migration, across checkout, delivery time slots and ad-tech squads.',
         context: 'Carrefour\'s multi-store e-commerce platform in France, re-architected around Domain-Driven Design. Worked across three squads: checkout and cart; delivery and pickup time slots; ad-tech.',
         outcomes: [
           'Rebuilt core platform modules from Vue 2 to Vue 3 and TypeScript domain by domain, as a core member of the migration, enforcing the Domain-Driven Design boundaries and data models that drove it.',
@@ -89,6 +106,7 @@ export const en = {
         title: 'Full-Stack Developer',
         location: 'France (Remote from Morocco)',
         dates: '08/2021 – 07/2023',
+        brief: 'HighCo CouponAI built solo in React over NestJS microservices, and UGAP search and catalog pages on Ara micro-frontends and Solr.',
         context: 'Client projects for HighCo CouponAI and UGAP, the French public procurement agency.',
         outcomes: [
           'HighCo CouponAI: built a new full-stack coupon application solo, with a React frontend replacing a legacy Vue 2 project over a NestJS microservices backend on PostgreSQL.',
@@ -102,6 +120,7 @@ export const en = {
         title: 'Front-End Developer',
         location: 'Casablanca, Morocco (On-site)',
         dates: '09/2020 – 08/2021',
+        brief: 'First version of the inwi e-commerce PWA, with its design system and RTL layouts, plus the win Nuxt platform.',
         context: 'Telecom platforms for inwi and win.',
         outcomes: [
           'Delivered the first version of the inwi e-commerce platform as a day-one team member, from architecture to deployment: a Vue 2 PWA on an early Vue Storefront release, over Elasticsearch indexed from a headless Magento 2 backend.',
@@ -116,6 +135,7 @@ export const en = {
         title: 'Full-Stack Developer',
         location: 'Casablanca, Morocco (On-site)',
         dates: '10/2018 – 09/2020',
+        brief: 'Vue 2 and Leaflet fleet-tracking app that progressively replaced the AngularJS one, over Laravel APIs.',
         context: 'Real-time fleet telematics and logistics tracking platform.',
         outcomes: [
           'Designed and built a Vue 2 fleet-management SPA with Vuetify and Leaflet.js that progressively replaced the production AngularJS application and moved mapping from costly Google Maps to open-source Leaflet.',
@@ -123,7 +143,7 @@ export const en = {
           'Mentored interns working on the new Vue platform.',
         ],
       },
-    } satisfies Record<RoleId, { title: string, location: string, dates: string, context: string, outcomes: string[] }>,
+    } satisfies Record<RoleId, { title: string, location: string, dates: string, brief: string, context: string, outcomes: string[] }>,
     skills: {
       'Vue': 'Vue',
       'Nuxt': 'Nuxt',

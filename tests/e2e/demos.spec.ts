@@ -28,6 +28,27 @@ test('picking a skill highlights only the roles that used it', async ({ page }) 
   await expect(page.locator('details.role.dim')).toHaveCount(5)
 })
 
+test('picking a skill opens the newest role that used it', async ({ page }) => {
+  await page.getByRole('button', { name: 'Algolia and Elasticsearch' }).click()
+
+  await expect(page.locator('details.role[open]')).toHaveCount(1)
+  await expect(page.locator('details.role[open]')).toContainText('SQLI')
+})
+
+test('closed roles still show what happened there', async ({ page }) => {
+  const role = page.locator('details.role').filter({ hasText: 'JP&CO' })
+  await expect(role).not.toHaveAttribute('open')
+  await expect(role.getByText('progressively replaced the AngularJS one')).toBeVisible()
+  await expect(role.getByRole('listitem').filter({ hasText: 'Leaflet.js' })).toBeVisible()
+})
+
+test('selected work links each public product and marks the internal one', async ({ page }) => {
+  const work = page.locator('#work')
+  await expect(work.locator('li')).toHaveCount(6)
+  await expect(work.getByRole('link', { name: 'kamera-express.nl' })).toHaveAttribute('href', 'https://www.kamera-express.nl/')
+  await expect(work.getByText('Internal platform, deployed to staging')).toBeVisible()
+})
+
 test('a front-end patch hiding a backend bug stops at human review', async ({ page }) => {
   await page.getByRole('button', { name: 'Front-end patch hiding a backend bug' }).click()
 

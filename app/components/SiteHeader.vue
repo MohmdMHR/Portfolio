@@ -8,6 +8,7 @@ const { theme, toggle } = useTheme()
     <div class="wrap">
       <strong>{{ m.nav.name }}</strong>
       <nav :aria-label="m.nav.label">
+        <a href="#work">{{ m.nav.work }}</a>
         <a href="#career">{{ m.nav.career }}</a>
         <a href="#demos">{{ m.nav.demos }}</a>
         <a href="#read">{{ m.nav.code }}</a>
