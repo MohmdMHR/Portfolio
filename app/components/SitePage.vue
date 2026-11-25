@@ -72,7 +72,7 @@ const m = useMessages()
         <div class="wrap">
           <h2>{{ m.code.heading }}</h2>
           <p class="intro">
-            {{ m.code.before }} <a :href="links.notes">{{ m.code.notes }}</a> {{ m.code.after }} <a :href="links.repo">{{ m.code.repo }}</a>. {{ m.code.live }}
+            {{ m.code.before }} <a :href="links.notes">{{ m.code.notes }}</a> {{ m.code.after }} <a :href="links.repo">{{ m.code.repo }}</a>.
           </p>
         </div>
       </section>

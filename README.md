@@ -1,6 +1,6 @@
 # Mohamed Mahir
 
-Personal site: Front-End Lead and Senior Full-Stack Engineer, Dubai. The site is built to be read as code as well as a page.
+Personal site: Senior Full Stack Engineer | Front-End Tech Lead, Dubai. The site is built to be read as code as well as a page.
 
 ## What to look at
 

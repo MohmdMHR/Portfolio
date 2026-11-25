@@ -45,13 +45,13 @@ const toPlayer = (raw: unknown): Player => Player.parse(raw)
 
 ## Rewriting a checkout without gambling on it
 
-**Setting:** high-traffic minicart, checkout and localised payment flows on a multi-store European e-commerce platform. Led the migration of core modules to Vue and TypeScript, working across three squads against Symfony services.
+**Setting:** high-traffic minicart, checkout and localised payment flows on a multi-store European e-commerce platform. Core member of the domain-by-domain migration of core modules from Vue 2 to Vue 3 and TypeScript, working across three squads against Symfony services.
 
 **Problem:** checkout rules were tangled with presentation, so a UI change could break a business rule, and revenue was at risk during any rewrite.
 
 **Principle:** Domain-Driven Design (Evans), the Dependency Rule (Martin), test-first (Beck), and separating deploy from release with feature flags.
 
-**Approach:** a total rewrite, proven in staging, with much of the development behind feature flags so unfinished work could ship without reaching customers. Domain rules were isolated from UI presentation and written test-first, so they could be read and tested without rendering a component. Contract compatibility with Symfony services was kept strict.
+**Approach:** a domain-by-domain rewrite and refactor, with feature flags used to test features on selected domains and to roll them out or back. Domain rules were isolated from UI presentation and written test-first, so they could be read and tested without rendering a component. Contract compatibility with Symfony services was kept strict.
 
 ## Introducing TypeScript to code that was already running
 
@@ -75,7 +75,7 @@ const toPlayer = (raw: unknown): Player => Player.parse(raw)
 
 ## Tokens as a shared language
 
-**Setting:** design tokens across three squads on e-commerce, and Vue component libraries on shared tokens for national telecom portals.
+**Setting:** a full design system built by overriding Vue Storefront's atomic components for national telecom portals, Vue Storefront components adapted to a European retailer's design system, and design-token-driven theming for multi-brand white-label platforms.
 
 **Problem:** without a shared vocabulary, each squad reinvents spacing and colour, and consistency depends on people remembering.
 
@@ -95,13 +95,13 @@ const toPlayer = (raw: unknown): Player => Player.parse(raw)
 
 ## A coupon can only be redeemed once
 
-**Setting:** NestJS microservices and PostgreSQL schemas for coupon generation, POS redemption and analytics, with React dashboards.
+**Setting:** a new full-stack coupon application built solo, with a React frontend over NestJS microservices on PostgreSQL.
 
 **Problem:** a coupon crosses systems, and a point-of-sale terminal retries when the network fails.
 
-**Principle:** idempotency, and Dependency Inversion (Martin) through dependency injection.
+**Principle:** Dependency Inversion (Martin) through dependency injection, and clear authorization boundaries.
 
-**Approach:** redemption is idempotent, so a retry cannot redeem twice. Clean service layers with dependency injection, REST APIs documented in Swagger, JWT authentication, role-based access control and rate limiting.
+**Approach:** refactored about half of the NestJS microservices into clean service layers with dependency injection, rewrote existing REST endpoints for the new application and created new ones, implemented JWT authentication, role-based access control and rate limiting that stops a coupon being redeemed twice, and integrated OAuth by refactoring the legacy implementation.
 
 ## Moving reads off the backend
 

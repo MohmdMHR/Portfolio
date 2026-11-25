@@ -86,20 +86,47 @@ onBeforeUnmount(() => window.removeEventListener('resize', drawLinks))
         <summary>
           <span class="t">
             {{ m.career.roles[role.id].title }}{{ locale === 'ar' ? '،' : ',' }}
-            <template v-if="role.employer">
-              <bdi>{{ role.employer }}</bdi>
-              <template v-if="role.forWithheldClient">
-                <span class="for-client">{{ m.career.forClient }}</span>
-                <RedactedName />
-              </template>
-            </template>
-            <RedactedName v-else />
+            <bdi>{{ role.employer }}</bdi>
           </span>
-          <span class="m">{{ m.career.roles[role.id].context }}. <bdi>{{ m.career.roles[role.id].dates }}</bdi></span>
+          <span class="m">{{ m.career.roles[role.id].location }}. <bdi>{{ m.career.roles[role.id].dates }}</bdi></span>
         </summary>
-        <p class="d">
-          {{ m.career.roles[role.id].detail }}
-        </p>
+        <div class="d">
+          <p class="ctx">
+            {{ m.career.roles[role.id].context }}
+          </p>
+          <p class="sites">
+            <span class="lbl">{{ m.career.sitesLabel }}:</span>
+            <template
+              v-for="site in role.sites"
+              :key="site.url"
+            >
+              {{ ' ' }}<a
+                :href="site.url"
+                target="_blank"
+                rel="noopener"
+              ><bdi>{{ site.name }}</bdi></a>
+            </template>
+          </p>
+          <ul class="outcomes">
+            <li
+              v-for="outcome in m.career.roles[role.id].outcomes"
+              :key="outcome"
+            >
+              {{ outcome }}
+            </li>
+          </ul>
+          <ul
+            class="tags"
+            :aria-label="m.career.techLabel"
+          >
+            <li
+              v-for="tag in role.tech"
+              :key="tag"
+            >
+              <bdi>{{ tag }}</bdi>
+            </li>
+          </ul>
+        </div>
       </details>
     </div>
   </div>

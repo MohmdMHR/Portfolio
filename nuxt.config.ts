@@ -10,12 +10,12 @@ export default defineNuxtConfig({
   app: {
     head: {
       htmlAttrs: { lang: 'en' },
-      title: 'Mohamed Mahir, Front-End Lead and Senior Full-Stack Engineer',
+      title: 'Mohamed Mahir, Senior Full Stack Engineer | Front-End Tech Lead',
       meta: [
         { name: 'viewport', content: 'width=device-width, initial-scale=1, viewport-fit=cover' },
         {
           name: 'description',
-          content: 'Mohamed Mahir, Front-End Lead and Senior Full-Stack Engineer in Dubai. 8+ years with React, Vue, Nuxt, TypeScript, Node.js, NestJS and Laravel.',
+          content: 'Mohamed Mahir, Senior Full Stack Engineer and Front-End Tech Lead in Dubai. 8 years building web platforms with React, Vue, Nuxt, TypeScript, Node.js (NestJS) and Laravel.',
         },
       ],
       link: [

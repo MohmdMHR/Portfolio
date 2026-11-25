@@ -8,9 +8,9 @@ test.describe('the recruiter answer', () => {
     await page.goto('/')
 
     await expect(page.getByRole('heading', { level: 1 })).toContainText('Mohamed')
-    await expect(page.getByText('Front-End Lead and Senior Full-Stack Engineer')).toBeVisible()
+    await expect(page.getByText('Senior Full Stack Engineer | Front-End Tech Lead')).toBeVisible()
     await expect(page.getByText('Based in Dubai, UAE')).toBeVisible()
-    await expect(page.getByText('React, Vue, Nuxt, TypeScript')).toBeVisible()
+    await expect(page.getByText('React, Vue and Nuxt in TypeScript')).toBeVisible()
     await expect(page.locator('.hero .cta').getByRole('link', { name: 'Download CV' })).toHaveAttribute('href', '/Mohamed-Mahir-CV.pdf')
     await expect(page.locator('.hero .cta').getByRole('link', { name: 'Email' })).toHaveAttribute('href', /^mailto:/)
   })

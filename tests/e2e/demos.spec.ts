@@ -21,7 +21,7 @@ test('the switch changes theme and remembers it', async ({ page }) => {
 })
 
 test('picking a skill highlights only the roles that used it', async ({ page }) => {
-  await page.getByRole('button', { name: 'Angular' }).click()
+  await page.getByRole('button', { name: 'AngularJS' }).click()
 
   await expect(page.locator('details.role.hit')).toHaveCount(1)
   await expect(page.locator('details.role.hit')).toContainText('JP&CO')
